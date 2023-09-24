@@ -12,7 +12,14 @@ const hashPassword = (plainPassword, salt) => {
     return hashedPasword;
 };
 
+// This passwordDecoder function is to decode the password and is used in the service file.
+const passwordDecoder = (plainPassword, hashedPassword) => {
+    const result = bcrypt.compareSync(plainPassword, hashedPassword);
+    return result; // This is a true or false value
+};
+
 module.exports = {
     generateSalt,
     hashPassword,
+    passwordDecoder,
 };
