@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-require("dotenv").config();
+
 
 // This generateSalt function is to create the Salt for the password which is the first step in the hashing process.
 const generateSalt =  () => {
