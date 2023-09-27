@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+require("dotenv").config();
 
-const DB_URL = "mongodb+srv://root:MR3EBpTdnjgvq4rH@deliveries.a1v07wm.mongodb.net/";
+const DB_URL = process.env.DB_URL;
 
 const dbConnection = async () => {
     try {
