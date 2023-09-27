@@ -2,6 +2,7 @@ const {
     createUser,
     returnAllUsers,
     checkEmailPassword,
+    userByEmail,
 } = require("../services/user.services");
 
 const signupUser = async (req, res) => {
@@ -35,8 +36,22 @@ const loginUser = async (req, res) => {
     }
 };
 
+// this function will get a user by email. Imported from services/user.services.js
+const getUserByEmail = async (req, res) => {
+    try {
+        const email = req.email;
+        const response = await userByEmail(email);
+
+        return res.json({ message: response });
+        
+    } catch (error) {
+        return res.json({ Error: error });
+    }
+};
+
 module.exports = {
     signupUser,
     getAllUsers,
     loginUser,
+    getUserByEmail,
 };
