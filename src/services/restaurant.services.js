@@ -50,7 +50,29 @@ const checkEmailPassword = async (restaurant) => {
     }
 };
 
+const returnAllRestaurants = async () => {
+    const restaurants = await Restaurant.findById();
+    if (restaurants) {
+        return restaurants;
+    } else{
+    return "No restaurants found";
+    }
+    
+};
+
+const returnARestaurant = async (id) => {
+    const restaurant = await Restaurant.findById(id); // or findOne({ _id: id })
+    if (restaurant) {
+        return restaurant;
+    } else {
+        return "No restaurant found";
+    }
+};
+
+
 module.exports = {
     createRestaurant,
     checkEmailPassword,
+    returnAllRestaurants,
+    returnARestaurant
 };

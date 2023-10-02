@@ -1,6 +1,8 @@
 const { model } = require("mongoose");
 const { createRestaurant,
-    checkEmailPassword
+    checkEmailPassword,
+    returnAllRestaurants,
+    returnARestaurant,
  } = require( "../services/restaurant.services");
 const Restaurant = require("../models/restaurant.model");
 
@@ -23,15 +25,37 @@ const logingRestaurant = async (req, res) => {
             password: req.body.password,
         };
         response = await checkEmailPassword(restaurant);
-        console.log(response);
+        // console.log(response);
         return res.json({ message: response });
     } catch (error) {
         return res.json({ Error: error.message });
     }
 };
 
+const getAllRestaurants = async (req, res) => {
+    try {
+        const response = await returnAllRestaurants();
+        return res.json({ message: response });
+    } catch (error) {
+        return res.json({ Error: error.message });
+    }
+};
+
+const getARestaurant = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const response = await returnARestaurant(id);
+        return res.json({ message: response });
+    } catch (error) {
+        return res.json({ Error: error.message });
+    }
+}
+
+
 module.exports = {
     signupRestaurant,
     logingRestaurant,
+    getAllRestaurants,
+    getARestaurant,
     
 };
