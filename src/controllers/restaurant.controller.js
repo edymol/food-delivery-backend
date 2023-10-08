@@ -18,7 +18,7 @@ const signupRestaurant = async (req, res) => {
     }
 };
 
-const logingRestaurant = async (req, res) => {
+const loginRestaurant = async (req, res) => {
     try {
         const restaurant = {
             email: req.body.email,
@@ -54,7 +54,7 @@ const getARestaurant = async (req, res) => {
 
 module.exports = {
     signupRestaurant,
-    logingRestaurant,
+    loginRestaurant,
     getAllRestaurants,
     getARestaurant,
     
